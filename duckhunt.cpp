@@ -379,3 +379,4 @@ void deleteDuck(Game *game, Duck *node)
 }
 
 //Testing
+//Testing if changes will be made without access given
