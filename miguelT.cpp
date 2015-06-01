@@ -22,7 +22,16 @@ void render(Game *game)
 
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
-
+    if (menu) {
+        glBindTexture(GL_TEXTURE_2D, menuTexture);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0.0f, 1.0f); glVertex2i(0, 0);
+        glTexCoord2f(0.0f, 0.0f); glVertex2i(0, WINDOW_HEIGHT);
+        glTexCoord2f(1.0f, 0.0f); glVertex2i(WINDOW_WIDTH, WINDOW_HEIGHT);
+        glTexCoord2f(1.0f, 1.0f); glVertex2i(WINDOW_WIDTH, 0);
+        glEnd();
+    }
+    if (!menu) {
     //Background and Gameover being displayed
     if(background) {
         glBindTexture(GL_TEXTURE_2D, backgroundTexture);
@@ -60,7 +69,7 @@ void render(Game *game)
     r.left = WINDOW_WIDTH - 715;
     r.center = 0;
 
-    menu(game);
+    Menu(game);
 
 
     Shape *s;
@@ -639,5 +648,6 @@ void render(Game *game)
                 }
                 glDisable(GL_ALPHA_TEST);
         }
+    }
     }
 }
