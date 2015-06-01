@@ -296,7 +296,7 @@ void render(Game *game)
             game->oneDuck = false;
             game->twoDuck = false;
             gameover = false;
-            std::cout << "Rounds: " << game->rounds << std::endl;
+            std::cout << "Round: " << game->rounds << std::endl;
             std::cout << "Score: " << game->score << std::endl;
             std::cout << "GAME OVER" << std::endl;
         }
