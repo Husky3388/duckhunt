@@ -186,11 +186,15 @@ int check_keys(XEvent *e, Game *game)
             game->afterDog = true;
             game->waitForDog = false;
         }
+        if(key == XK_s)
+        {
+            menu ^= 1;
+        }
     }
     return 0;
 }
 
-void menu(Game *game)
+void Menu(Game *game)
 {
     float w, h;
 
