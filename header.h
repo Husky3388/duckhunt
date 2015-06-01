@@ -107,6 +107,11 @@ extern Sprite dog_sprite3;
 extern Ppmimage *dogImage3;
 extern GLuint dogTexture3;
 extern GLuint dogSil3;
+//Fourth Dog Sprite
+extern Sprite dog_sprite4;
+extern Ppmimage *dogImage4;
+extern GLuint dogTexture4;
+extern GLuint dogSil4;
 //Bullet Sprite
 extern Sprite bullet_sprite;
 extern Ppmimage *bulletImage;
@@ -318,7 +323,7 @@ struct Game {
 
     }
 };
-//--------------------------------------------------------------------------------------------------------------------
+
 //Function prototypes
 //
 // Miguel's
@@ -346,14 +351,11 @@ void deleteHappyDog(Game *game, happyDog *dog);
 void deleteLaughingDog(Game *game, laughingDog *dog);
 // Cuong's
 int check_keys(XEvent *e, Game *game);
-void Menu(Game *game);
-extern Ppmimage *menuImage;
-extern GLuint menuTexture;
-extern int menu;
+void menu(Game *game);
 // Ayomide
 void check_mouse(XEvent *e, Game *game);
 void init_sounds(void);
-//--------------------------------------------------------------------------------------------------------------------
+
 extern Ppmimage *backgroundImage;
 extern GLuint backgroundTexture;
 extern int background;

@@ -22,16 +22,7 @@ void render(Game *game)
 
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    if (menu) {
-        glBindTexture(GL_TEXTURE_2D, menuTexture);
-        glBegin(GL_QUADS);
-        glTexCoord2f(0.0f, 1.0f); glVertex2i(0, 0);
-        glTexCoord2f(0.0f, 0.0f); glVertex2i(0, WINDOW_HEIGHT);
-        glTexCoord2f(1.0f, 0.0f); glVertex2i(WINDOW_WIDTH, WINDOW_HEIGHT);
-        glTexCoord2f(1.0f, 1.0f); glVertex2i(WINDOW_WIDTH, 0);
-        glEnd();
-    }
-    if (!menu) {
+
     //Background and Gameover being displayed
     if(background) {
         glBindTexture(GL_TEXTURE_2D, backgroundTexture);
@@ -69,7 +60,7 @@ void render(Game *game)
     r.left = WINDOW_WIDTH - 715;
     r.center = 0;
 
-    Menu(game);
+    menu(game);
 
 
     Shape *s;
@@ -296,7 +287,7 @@ void render(Game *game)
             game->oneDuck = false;
             game->twoDuck = false;
             gameover = false;
-            std::cout << "Round: " << game->rounds << std::endl;
+            std::cout << "Rounds: " << game->rounds << std::endl;
             std::cout << "Score: " << game->score << std::endl;
             std::cout << "GAME OVER" << std::endl;
         }
@@ -503,6 +494,7 @@ void render(Game *game)
     glColor3ub(0, 0, 0);
     while(doge)
     {
+        double ts = timeDiff(&doge->time, &dt); ///////////////////////////
         w = doge->s.width;
         h = doge->s.height;
         x = doge->s.center.x;
@@ -517,11 +509,25 @@ void render(Game *game)
         if(show_dog) {
                 glPushMatrix();
                 glTranslatef(dog_sprite1.pos[0], dog_sprite1.pos[1], dog_sprite1.pos[2]);
+
+		///////////////////////////////////////////
+		if(ts < 6)
+		{
                 glBindTexture(GL_TEXTURE_2D, dogTexture1); //test
                         glBindTexture(GL_TEXTURE_2D, dogSil1);
                         glEnable(GL_ALPHA_TEST);
                         glAlphaFunc(GL_GREATER, 0.0f);
                         glColor4ub(255,255,255,255);
+		}
+		if(ts > 6)
+		{
+                glBindTexture(GL_TEXTURE_2D, dogTexture4); //test
+                        glBindTexture(GL_TEXTURE_2D, dogSil4);
+                        glEnable(GL_ALPHA_TEST);
+                        glAlphaFunc(GL_GREATER, 0.0f);
+                        glColor4ub(255,255,255,255);
+		}
+		//////////////////////////////////////////////
                 glBegin(GL_QUADS);
                 if (dog_sprite1.vel[0] > 0.0) {
                         glTexCoord2f(0.0f, 1.0f); glVertex2i(-wid,-wid);
@@ -648,6 +654,5 @@ void render(Game *game)
                 }
                 glDisable(GL_ALPHA_TEST);
         }
-    }
     }
 }

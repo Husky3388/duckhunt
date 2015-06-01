@@ -65,6 +65,11 @@ Sprite dog_sprite3;
 Ppmimage *dogImage3=NULL;
 GLuint dogTexture3;
 GLuint dogSil3;
+//Fourth Dog Sprite
+Sprite dog_sprite4;
+Ppmimage *dogImage4=NULL;
+GLuint dogTexture4;
+GLuint dogSil4;
 int show_duck = 0;
 int silhouette = 1;
 int show_dog = 0;
@@ -80,10 +85,6 @@ GLuint duckscoreTexture;
 Sprite duckscore_sprite2;
 Ppmimage *duckscoreImage2=NULL;
 GLuint duckscoreTexture2;
-
-Ppmimage *menuImage = NULL; //for menu splashscreen
-GLuint menuTexture;//menu splashcreen
-int menu = 1;// menu
 
 Ppmimage *backgroundImage = NULL;
 GLuint backgroundTexture;

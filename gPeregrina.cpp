@@ -107,7 +107,6 @@ void init_opengl(void)
     glDisable(GL_CULL_FACE);
     //clear the screen
     glClearColor(1.0, 1.0, 1.0, 1.0);
-    menuImage = ppm6GetImage("./images/menu.ppm");
     backgroundImage = ppm6GetImage("./images/background.ppm");
     backgroundTransImage = ppm6GetImage("./images/backgroundTrans.ppm");
     gameoverbgImage = ppm6GetImage("./images/gameoverbg.ppm");
@@ -325,6 +324,17 @@ void init_opengl(void)
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, w12, h12, 0, GL_RGB, GL_UNSIGNED_BYTE, dogImage3->data);
 	//-------------------------------------------------------------------
+	//Dog sprite 4
+	glGenTextures(1, &dogTexture4);
+	glGenTextures(1, &dogSil4);
+	dogImage4 = ppm6GetImage("./images/dog_jumping.ppm");
+	int w13 = dogImage4->width;
+	int h13 = dogImage4->height;
+	glBindTexture(GL_TEXTURE_2D, dogTexture4);
+	//
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, w13, h13, 0, GL_RGB, GL_UNSIGNED_BYTE, dogImage4->data);
 
     //-------------------------------------------------------------------
 	//Dog silhouette 1
@@ -361,6 +371,15 @@ void init_opengl(void)
 	GL_RGBA, GL_UNSIGNED_BYTE, silhouetteData8);
 	delete [] silhouetteData8;
 	//-------------------------------------------------------------------
+	//Dog silhouette 4
+	glBindTexture(GL_TEXTURE_2D, dogSil4);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+	////must build a new set of data...
+	unsigned char *silhouetteData9 = buildAlphaData(dogImage4);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w13, h13, 0,
+	GL_RGBA, GL_UNSIGNED_BYTE, silhouetteData8);
+	delete [] silhouetteData9;
 
 //-------------------------------------------------------------------
     //background textures
@@ -385,18 +404,7 @@ void init_opengl(void)
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w15, h15, 0, GL_RGBA, GL_UNSIGNED_BYTE, ftData);
     delete [] ftData;
     //-------------------------------------------------------------------
-    
-    //-------------------------------------------------------------------
-    //Menu
-    glGenTextures(1, &menuTexture);
-    //menu splashscreen
-    glBindTexture(GL_TEXTURE_2D, menuTexture);
-    //
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, menuImage->width, menuImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, menuImage->data);
-    //-------------------------------------------------------------------
-    
+
     //-------------------------------------------------------------------
     //gameover
     glGenTextures(1, &gameoverbgTexture);

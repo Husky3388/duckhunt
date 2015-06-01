@@ -49,10 +49,8 @@ void check_mouse(XEvent *e, Game *game)
                     game->bullets--;
                     game->duckShot++;
                     game->duckCaptured++;
-			    std::cout << game->bullets << std::endl;
                     if(game->bullets < 1)
                     {
-			    std::cout << game->bullets << std::endl;
                         if(game->n == 1)
                         {
                             makeFreeDuck(game, d);
@@ -92,7 +90,6 @@ void check_mouse(XEvent *e, Game *game)
                         game->duckCaptured++;
                         if(game->bullets < 1)
                         {
-			    std::cout << game->bullets << std::endl;
                             if(game->n == 1)
                             {
                                 makeFreeDuck(game, d);
@@ -107,6 +104,7 @@ void check_mouse(XEvent *e, Game *game)
                 }
                 if(game->bullets <= 1)
                 {
+		    game->bullets--;
                     if(game->n == 2)
                     {
                         d = d->prev;
@@ -125,8 +123,6 @@ void check_mouse(XEvent *e, Game *game)
                     return;
                 }
                 game->bullets--;
-		//if(game->bullets <= 1)
-		  //  game->bullets;
                 d = d->next;
             }
         }
