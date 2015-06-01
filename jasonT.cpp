@@ -51,6 +51,7 @@ void makeDuck(Game *game, float x, float y)
 
 void makeDeadDuck(Game *game, Duck *duck)
 {
+    fmod_playsound(5);
     if(game->onScreen >= MAX_DUCKS)
 	return;
     struct timespec dt;

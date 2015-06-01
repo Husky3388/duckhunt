@@ -88,6 +88,7 @@ int check_keys(XEvent *e, Game *game)
         //You may check other keys here.
         if(key == XK_1)
         {
+	    fmod_playsound(2);
             game->menutest = false;
             gameover = false;
             while(d)
@@ -137,6 +138,7 @@ int check_keys(XEvent *e, Game *game)
         }
         if(key == XK_2)
         {
+	    fmod_playsound(2);
             game->menutest = false;
             gameover = false;
             while(d)

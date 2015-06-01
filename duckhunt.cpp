@@ -105,6 +105,7 @@ int main(void)
     //declare game object
     Game game;
 
+    fmod_playsound(1);
     //start animation
     while(!done) {
 	while(XPending(dpy)) {

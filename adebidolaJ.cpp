@@ -22,16 +22,15 @@ void check_mouse(XEvent *e, Game *game)
     if (e->type == ButtonPress) {
         if (e->xbutton.button==1) {
 //#ifdef USE_SOUND //////////////////////////////////////////////////
-          fmod_playsound(0);
             //Left button was pressed
             while(d)
             {
+		fmod_playsound(0);
                 if(e->xbutton.x >= d->s.center.x - d->s.width &&
                         e->xbutton.x <= d->s.center.x + d->s.width &&
                         y <= d->s.center.y + d->s.height &&
                         y >= d->s.center.y - d->s.height)
                 {
-                    fmod_playsound(1);
                     makeDeadDuck(game, d);
                     ts = timeDiff(&d->time, &dt);
                     if(ts < 1.5)
@@ -50,8 +49,10 @@ void check_mouse(XEvent *e, Game *game)
                     game->bullets--;
                     game->duckShot++;
                     game->duckCaptured++;
+			    std::cout << game->bullets << std::endl;
                     if(game->bullets < 1)
                     {
+			    std::cout << game->bullets << std::endl;
                         if(game->n == 1)
                         {
                             makeFreeDuck(game, d);
@@ -91,6 +92,7 @@ void check_mouse(XEvent *e, Game *game)
                         game->duckCaptured++;
                         if(game->bullets < 1)
                         {
+			    std::cout << game->bullets << std::endl;
                             if(game->n == 1)
                             {
                                 makeFreeDuck(game, d);
@@ -123,6 +125,8 @@ void check_mouse(XEvent *e, Game *game)
                     return;
                 }
                 game->bullets--;
+		//if(game->bullets <= 1)
+		  //  game->bullets;
                 d = d->next;
             }
         }
@@ -147,12 +151,35 @@ void init_sounds(void)
         std::cout << "ERROR - fmod_createsound()\n" << std::endl;
         return;
     }
-    if (fmod_createsound((char *)"./sounds/drip.mp3", 1)) {
+    if (fmod_createsound((char *)"./sounds/startgame.mp3", 1)) {
         std::cout << "ERROR - fmod_createsound()\n" << std::endl;
         return;
     }
+    if (fmod_createsound((char *)"./sounds/startround.mp3", 2)) {
+        std::cout << "ERROR - fmod_createsound()\n" << std::endl;
+        return;
+    }
+    if (fmod_createsound((char *)"./sounds/intro.mp3", 3)) {
+        std::cout << "ERROR - fmod_createsound()\n" << std::endl;
+        return;
+    }
+    if (fmod_createsound((char *)"./sounds/doglaugh.mp3", 4)) {
+        std::cout << "ERROR - fmod_createsound()\n" << std::endl;
+        return;
+    }
+    if (fmod_createsound((char *)"./sounds/drop.mp3", 5)) {
+        std::cout << "ERROR - fmod_createsound()\n" << std::endl;
+        return;
+    }
+    if (fmod_createsound((char *)"./sounds/endround.mp3", 6)) {
+        std::cout << "ERROR - fmod_createsound()\n" << std::endl;
+        return;
+    }
+
+
+
     fmod_setmode(0,FMOD_LOOP_OFF);
     //fmod_playsound(0);
     //fmod_systemupdate();
-#endif //USE_SOUND
+    #endif //USE_SOUND
 }

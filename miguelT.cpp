@@ -83,8 +83,10 @@ void render(Game *game)
         num = 1, dist = 40;
     }
     if (game->bullets == 0) {
+	//std::cout << "hello" << std::endl;
         num = 0, dist = 0;
     }
+//	std::cout << game->bullets << std::endl;
     if (game->bullets != 0) {
         for (int i=0;i<num;i++) {
             bullet_sprite.pos[0] = dist - (i * 20);
@@ -249,15 +251,22 @@ void render(Game *game)
     if(game->afterDog && game->onScreen == 0 && game->dogGone && game->n == 0 && game->waitForDog)
     {
         if(game->duckCaptured >= 1)
+	{
             makeHappyDog(game, WINDOW_WIDTH / 2, game->floor + 51);
+	    fmod_playsound(6);
+	}
         else
+	{
             makeLaughingDog(game, WINDOW_WIDTH / 2, game->floor + 51);
+	    fmod_playsound(4);
+	}
         game->afterDog = false;
         game->duckCaptured = 0;
     }
 
     if(!d && game->duckCount >= 10 && game->duckShot >= 6 && game->dogGone && !game->waitForDog && game->onScreen == 0 && game->n == 0)
     {
+	fmod_playsound(2);
         game->rounds++;
         game->duckCount = 0;
         game->duckShot = 0;
