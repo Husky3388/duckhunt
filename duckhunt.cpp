@@ -86,6 +86,10 @@ Sprite duckscore_sprite2;
 Ppmimage *duckscoreImage2=NULL;
 GLuint duckscoreTexture2;
 
+Ppmimage *menuImage = NULL; //for menu splashscreen
+GLuint menuTexture;//menu splashcreen
+int menu = 1;// menu
+
 Ppmimage *backgroundImage = NULL;
 GLuint backgroundTexture;
 int background = 1;
