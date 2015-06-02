@@ -328,6 +328,15 @@ struct Game {
 //
 // Miguel's
 void render(Game *game);
+extern Ppmimage *backgroundImage;
+extern GLuint backgroundTexture;
+extern int background;
+extern Ppmimage *backgroundTransImage;
+extern Ppmimage *gameoverbgImage;
+extern GLuint backgroundTransTexture;
+extern GLuint gameoverbgTexture;
+extern int trees;
+extern bool gameover;
 // Gerardo's
 void set_title(void);
 void cleanupXWindows(void);
@@ -351,21 +360,12 @@ void deleteHappyDog(Game *game, happyDog *dog);
 void deleteLaughingDog(Game *game, laughingDog *dog);
 // Cuong's
 int check_keys(XEvent *e, Game *game);
-void menu(Game *game);
+void Menu(Game *game);
+extern Ppmimage *menuImage;
+extern GLuint menuTexture;
+extern int menu;
 // Ayomide
 void check_mouse(XEvent *e, Game *game);
 void init_sounds(void);
-
-extern Ppmimage *backgroundImage;
-extern GLuint backgroundTexture;
-extern int background;
-//Transparent background
-extern Ppmimage *backgroundTransImage;
-extern Ppmimage *gameoverbgImage;
-extern GLuint backgroundTransTexture;
-extern GLuint gameoverbgTexture;
-extern int trees;
-extern bool gameover;
-
 
 #endif
