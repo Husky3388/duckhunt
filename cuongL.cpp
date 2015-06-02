@@ -186,6 +186,11 @@ int check_keys(XEvent *e, Game *game)
             game->afterDog = true;
             game->waitForDog = false;
         }
+        // press s to start the game
+        if(key == XK_s)
+        {
+            menu ^= 1;
+        }
     }
     return 0;
 }
