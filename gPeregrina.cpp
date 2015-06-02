@@ -107,11 +107,10 @@ void init_opengl(void)
     glDisable(GL_CULL_FACE);
     //clear the screen
     glClearColor(1.0, 1.0, 1.0, 1.0);
+    menuImage = ppm6GetImage("./images/menu.ppm");// menu splashscreen
     backgroundImage = ppm6GetImage("./images/background.ppm");
     backgroundTransImage = ppm6GetImage("./images/backgroundTrans.ppm");
     gameoverbgImage = ppm6GetImage("./images/gameoverbg.ppm");
-
-
 
     //-------------------------------------------------------------------
     //bullet
@@ -381,7 +380,13 @@ void init_opengl(void)
 	GL_RGBA, GL_UNSIGNED_BYTE, silhouetteData8);
 	delete [] silhouetteData9;
 
-//-------------------------------------------------------------------
+    glGenTextures(1, &menuTexture);//menu
+    glBindTexture(GL_TEXTURE_2D, menuTexture);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, menuImage->width, menuImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, menuImage->data);
+
+    //-------------------------------------------------------------------
     //background textures
     //create opengl texture elements
     glGenTextures(1, &backgroundTexture);
