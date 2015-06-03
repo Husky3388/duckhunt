@@ -51,7 +51,7 @@ void makeDuck(Game *game, float x, float y)
 
 void makeDeadDuck(Game *game, Duck *duck)
 {
-    fmod_playsound(5);
+    //fmod_playsound(5);
     if(game->onScreen >= MAX_DUCKS)
 	return;
     struct timespec dt;
@@ -318,6 +318,8 @@ void movement(Game *game)
 	    dd->velocity.y = 0.0;
 	if(ts > 0.3)
 	    dd->velocity.y = velocity;
+	if(ts > 0.3 && ts < 0.4)
+	    fmod_playsound(5);
 	if(dd->s.center.y - dd->s.height <= game->floor)
 	{
 	    game->waitForDog = true;
