@@ -192,7 +192,7 @@ int check_keys(XEvent *e, Game *game)
     return 0;
 }
 
-void menu(Game *game)
+void Menu(Game *game)
 {
     float w, h;
 

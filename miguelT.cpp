@@ -552,7 +552,21 @@ void render(Game *game)
                 }
                 glEnd();
                 glPopMatrix();
-                glDisable(GL_ALPHA_TEST);
+				if(ts > 6.5) {
+					if (trees && silhouette) {
+							glBindTexture(GL_TEXTURE_2D, backgroundTransTexture);
+							glBegin(GL_QUADS);
+							glTexCoord2f(0.0f, 1.0f); glVertex2i(0, 0);
+							glTexCoord2f(0.0f, 0.0f); glVertex2i(0, WINDOW_HEIGHT);
+							glTexCoord2f(1.0f, 0.0f); glVertex2i(WINDOW_WIDTH, WINDOW_HEIGHT);
+							glTexCoord2f(1.0f, 1.0f); glVertex2i(WINDOW_WIDTH, 0);
+							glEnd();
+					}
+                }
+
+				
+				
+				glDisable(GL_ALPHA_TEST);
         }
     }
 
