@@ -1,6 +1,5 @@
 //Gerardo Peregrina
 //Duckhunt
-//Hw3
 //Worked on the duck image, 
 //bullet score image, and duck score image
 
