@@ -237,13 +237,9 @@ void movement(Game *game)
     clock_gettime(CLOCK_REALTIME, &dt);
     int randDirectionNumX, randDirectionNumY;
 
-    //std::cout << doge << std::endl;
-    //if (game->n <= 0)
-//	return;
-
-    //std::cout << doge << std::endl;
     while(d)
     {
+	//fmod_playsound(8);
 	double ts = timeDiff(&d->time, &dt);
 	randDirectionNumX = rand() % 101;
 	randDirectionNumY = rand() % 101;
@@ -322,6 +318,7 @@ void movement(Game *game)
 	    fmod_playsound(5);
 	if(dd->s.center.y - dd->s.height <= game->floor)
 	{
+	    fmod_playsound(9);
 	    game->waitForDog = true;
 	    deleteDeadDuck(game, dd);
 	    if(game->n == 0)
@@ -387,6 +384,7 @@ void movement(Game *game)
 	    doge->velocity.x = 0.0;
 	if(6.0 < ts && ts < 6.1)
 	{
+	    fmod_playsound(7);
 	    doge->velocity.x = 1.5;
 	    doge->velocity.y = 2.0;
 	}
