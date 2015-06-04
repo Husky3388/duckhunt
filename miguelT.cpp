@@ -1,6 +1,5 @@
 // Miguel Tlatelpa
-// Did background, transparent background, and gameover
-// still have more to do
+// Worked on the render mostly and a few other small stuff
 // Duck Hunt
 
 #include "header.h"
